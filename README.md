@@ -1,4 +1,4 @@
-#ngx-advent-of-code-2017
+# ngx-advent-of-code-2017
 
 ## What is *Advent of Code*? 
 From the *Advent of Code* official page: 
