@@ -19,7 +19,7 @@ describe('Tests day 1 (problem one) algorithm', () => {
   });
 
   it('Test invalid input', () => {
-    expect( () => parseInput('223f')).toThrowError('Invalid Input');
+    expect( () => parseInput('223f')).toThrowError();
   });
 
 });
@@ -47,7 +47,11 @@ describe('Test day 1 (problem two) algorithm', () => {
   });
 
   it('Test invalid input', () => {
-    expect( () => parseInput2('223f')).toThrowError('Invalid Input');
+    expect( () => parseInput2('223f')).toThrowError();
+  });
+
+  it('Test uneven input length', () => {
+    expect(() => parseInput2('111')).toThrowError();
   });
 
 });
