@@ -6,29 +6,46 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Day One
+          <strong>--- Day 1: Inverse Captcha ---</strong>
         </mat-panel-title>
         <mat-panel-description>
           <div class="description__status">Progress:
-            <div class="description__status-sub"><span title="#1 Not completed" class="bubble red"></span></div>
-            <div class="description__status-sub"><span title="#2 Completed" class="bubble green"></span></div>
+            <div class="description__status-sub"><span title="#1 Completed" class="bubble green"></span></div>
+            <div class="description__status-sub"><span title="#2 In progress" class="bubble yellow"></span></div>
           </div>
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <mat-tab-group class="demo-tab-group">
+        <mat-tab label="Problem 1">
+          <h3>Problem:</h3>
+          <p>The captcha requires you to review a sequence of digits (your puzzle input) and find the sum of all digits that match the next digit in the list. The list is circular, so the digit after the last digit is the first digit in the list.</p>
 
-      <h3>Problem:</h3>
-      <p>The captcha requires you to review a sequence of digits (your puzzle input) and find the sum of all digits that match the next digit in the list. The list is circular, so the digit after the last digit is the first digit in the list.</p>
+          <p><strong>For example:</strong></p>
+          <ul>
+            <li>1122 produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.</li>
+            <li>1111 produces 4 because each digit (all 1) matches the next.</li>
+            <li>1234 produces 0 because no digit matches the next.</li>
+            <li>91212129 produces 9 because the only digit that matches the next one is the last digit, 9.</li>
+          </ul>
 
-      <p><strong>For example:</strong></p>
-      <ul>
-        <li>1122 produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.</li>
-        <li>1111 produces 4 because each digit (all 1) matches the next.</li>
-        <li>1234 produces 0 because no digit matches the next.</li>
-        <li>91212129 produces 9 because the only digit that matches the next one is the last digit, 9.</li>
-      </ul>
+          <p><strong>What is the solution to your captcha?</strong></p>
 
-      <p><strong>What is the solution to your captcha?</strong></p>
-
+        </mat-tab>
+        <mat-tab label="Problem 2">
+          <h3>Problem:</h3>
+          <p>You notice a progress bar that jumps to 50% completion. Apparently, the door isn't yet satisfied, but it did emit a star as encouragement. The instructions change:</p>
+          <p>Now, instead of considering the next digit, it wants you to consider the digit halfway around the circular list. That is, if your list contains 10 items, only include a digit in your sum if the digit 10/2 = 5 steps forward matches it. Fortunately, your list has an even number of elements.</p>
+          <p><strong>For example:</strong></p>
+          <ul>
+            <li>1212 produces 6: the list contains 4 items, and all four digits match the digit 2 items ahead.</li>
+            <li>1221 produces 0, because every comparison is between a 1 and a 2.</li>
+            <li>123425 produces 4, because both 2s match each other, but no other digit has a match.</li>
+            <li>123123 produces 12.</li>
+            <li>12131415 produces 4.</li>
+          </ul>
+          <p><strong>What is the solution to your new captcha?</strong></p>
+        </mat-tab>
+      </mat-tab-group>
 
       <mat-form-field class="full-width">
         <textarea matInput matTextareaAutosize placeholder="Your input" [formControl]="input"></textarea>
@@ -36,12 +53,13 @@
       <div class="button-row">
         <button [disabled]="disabled" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
       </div>
-      <div class="output__panel">
+
+      <div class="output__panel" [class.output__panel--error]="output && !output.valid">
         <span class="output__panel--placeholder">Output:</span>
-        <p *ngIf="output">{{output}}</p>
+        <p *ngIf="output">
+          <span [class.error]="!output.valid">{{output.message}}</span>
+        </p>
       </div>
-
-
     </mat-expansion-panel>
   </div>
 </div>

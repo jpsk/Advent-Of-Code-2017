@@ -33,6 +33,11 @@ $base-padding: 12px 16px;
   background-color: $output-panel-background-color;
 }
 
+
+.output__panel--error {
+  background-color: red;
+}
+
 .output__panel--placeholder {
   color: #a7a7a7;
 }
@@ -61,4 +66,14 @@ $base-padding: 12px 16px;
   &.green {
     background-color: #8BC34A;
   }
+
+  &.yellow {
+    background-color: #ffd54f;
+  }
+}
+
+.mat-tab-body,
+.mat-tab-body-wrapper,
+.mat-tab-body-content {
+  overflow: hidden !important;
 }

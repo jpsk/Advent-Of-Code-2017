@@ -6,7 +6,8 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTabsModule
 } from '@angular/material';
 
 
@@ -24,7 +25,8 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     MatExpansionModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
