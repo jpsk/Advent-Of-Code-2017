@@ -1,2 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+
+// Variables
+
+$container-width: 1024px;
+$output-panel-background-color: #f7f7f7;
+$base-margin: 1em 0;
+$base-padding: 12px 16px;
+
+
+// Init style
+
+.container {
+  margin: auto;
+  max-width: $container-width;
+}
+
+.problems {
+  margin: $base-margin;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.output__panel {
+  min-height:100px;
+  padding: $base-padding;
+  margin: $base-margin;
+  background-color: $output-panel-background-color;
+}
+
+.output__panel--placeholder {
+  color: #a7a7a7;
+}
+
+
+.description__status{
+
+}
+
+.description__status-sub {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+}
+
+.bubble {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  border-radius: 8px;
+
+  &.red {
+    background-color: #F44336;
+  }
+
+  &.green {
+    background-color: #8BC34A;
+  }
+}

@@ -1,20 +1,47 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
+  <mat-toolbar color="primary">
+    <h1>Advent Of Code 2017</h1>
+  </mat-toolbar>
+  <div class="problems">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Day One
+        </mat-panel-title>
+        <mat-panel-description>
+          <div class="description__status">Progress:
+            <div class="description__status-sub"><span title="#1 Not completed" class="bubble red"></span></div>
+            <div class="description__status-sub"><span title="#2 Completed" class="bubble green"></span></div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
+      <h3>Problem:</h3>
+      <p>The captcha requires you to review a sequence of digits (your puzzle input) and find the sum of all digits that match the next digit in the list. The list is circular, so the digit after the last digit is the first digit in the list.</p>
+
+      <p><strong>For example:</strong></p>
+      <ul>
+        <li>1122 produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.</li>
+        <li>1111 produces 4 because each digit (all 1) matches the next.</li>
+        <li>1234 produces 0 because no digit matches the next.</li>
+        <li>91212129 produces 9 because the only digit that matches the next one is the last digit, 9.</li>
+      </ul>
+
+      <p><strong>What is the solution to your captcha?</strong></p>
+
+
+      <mat-form-field class="full-width">
+        <textarea matInput matTextareaAutosize placeholder="Your input" [formControl]="input"></textarea>
+      </mat-form-field>
+      <div class="button-row">
+        <button [disabled]="disabled" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+      </div>
+      <div class="output__panel">
+        <span class="output__panel--placeholder">Output:</span>
+        <p *ngIf="output">{{output}}</p>
+      </div>
+
+
+    </mat-expansion-panel>
+  </div>
+</div>
