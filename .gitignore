@@ -83,4 +83,4 @@ cmake-build-debug/
 
 # IntelliJ
 .idea/
-
+dist/
