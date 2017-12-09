@@ -1,5 +1,6 @@
 import { day01_1, day01_2 } from './logic/day-1';
 import { day02_1, day02_2 } from './logic/day-2';
+import { day03_1, day03_2 } from './logic/day-3';
 
 interface ProgressItem {
   title: string;
@@ -40,10 +41,10 @@ export const APP_CONFIG = {
             <p>The captcha requires you to review a sequence of digits (your puzzle input) and find the <u>sum</u> of all digits that match the <u>next</u> digit in the list. The list is circular, so the digit after the last digit is the <u>first</u> digit in the list.</p>
             <p><strong>For example:</strong></p>
             <ul>
-              <li>1122 produces a sum of 3 (1 + 2) because the first digit (1) matches the second digit and the third digit (2) matches the fourth digit.</li>
-              <li>1111 produces 4 because each digit (all 1) matches the next.</li>
-              <li>1234 produces 0 because no digit matches the next.</li>
-              <li>91212129 produces 9 because the only digit that matches the next one is the last digit, 9.</li>
+              <li><code>1122</code> produces a sum of <code>3</code> (<code>1</code> + <code>2</code>) because the first digit (<code>1</code>) matches the second digit and the third digit (2) matches the fourth digit.</li>
+              <li><code>1111</code> produces <code>4</code> because each digit (all <code>1</code>) matches the next.</li>
+              <li><code>1234</code> produces <code>0</code> because no digit matches the next.</li>
+              <li><code>91212129</code> produces <code>9</code> because the only digit that matches the next one is the last digit, <code>9</code>.</li>
             </ul>
 
           <p><strong>What is the solution to your captcha?</strong></p>`
@@ -52,18 +53,17 @@ export const APP_CONFIG = {
           progress: PROGRESS.completed(2),
           fn: day01_2,
           description: `
-        <h3>Story:</h3>
-         <p>You notice a progress bar that jumps to 50% completion. Apparently, the door isn't yet satisfied, but it did emit a star as encouragement. The instructions change:</p>
-         <p>Now, instead of considering the <u>next</u> digit, it wants you to consider the digit <u>halfway around</u> the circular list. That is, if your list contains 10 items, only include a digit in your sum if the digit 10/2 = 5 steps forward matches it. Fortunately, your list has an even number of elements.</p>
-         <p><strong>For example:</strong></p>
-         <ul>
-           <li>1212 produces 6: the list contains 4 items, and all four digits match the digit 2 items ahead.</li>
-           <li>1221 produces 0, because every comparison is between a 1 and a 2.</li>
-           <li>123425 produces 4, because both 2s match each other, but no other digit has a match.</li>
-           <li>123123 produces 12.</li>
-           <li>12131415 produces 4.</li>
-         </ul>
-         <p><strong>What is the solution to your new captcha?</strong></p>`
+            <p>You notice a progress bar that jumps to 50% completion. Apparently, the door isn't yet satisfied, but it did emit a star as encouragement. The instructions change:</p>
+            <p>Now, instead of considering the <u>next</u> digit, it wants you to consider the digit <u>halfway around</u> the circular list. That is, if your list contains <code>10</code> items, only include a digit in your sum if the digit <code>10/2 = 5</code> steps forward matches it. Fortunately, your list has an even number of elements.</p>
+            <p><strong>For example:</strong></p>
+            <ul>
+              <li><code>1212</code> produces <code>6</code>: the list contains <code>4</code> items, and all four digits match the digit <code>2</code> items ahead.</li>
+              <li><code>1221</code> produces <code>0</code>, because every comparison is between a <code>1</code> and a <code>2</code>.</li>
+              <li><code>123425</code> produces <code>4</code>, because both <code>2s</code> match each other, but no other digit has a match.</li>
+              <li><code>123123</code> produces <code>12</code>.</li>
+              <li><code>12131415</code> produces <code>4</code>.</li>
+            </ul>
+            <p><strong>What is the solution to your new captcha?</strong></p>`
         }
       ]
     },
@@ -77,15 +77,16 @@ export const APP_CONFIG = {
             <p>As you walk through the door, a glowing humanoid shape yells in your direction. "You there! Your state appears to be idle. Come help us repair the corruption in this spreadsheet - if we take another millisecond, we'll have to display an hourglass cursor!"</p>
             <p>The spreadsheet consists of rows of apparently-random numbers. To make sure the recovery process is on the right track, they need you to calculate the spreadsheet's <u>checksum</u>. For each row, determine the difference between the largest value and the smallest value; the checksum is the sum of all of these differences.</p>
             <p>For example, given the following spreadsheet:</p>
-            <p class="mono-box">5 1 9 5<br>7 5 3<br>2 4 6 8</p>
+            <pre><code>5 1 9 5
+7 5 3
+2 4 6 8</code></pre>
             <ul>
-              <li>The first row's largest and smallest values are 9 and 1, and their difference is <u>8</u>.</li>
-              <li>The second row's largest and smallest values are 7 and 3, and their difference is <u>4</u>.</li>
-              <li>The third row's difference is <u>6</u>.</li>
+              <li>The first row's largest and smallest values are <code>9</code> and <code>1</code>, and their difference is <code>8</code>.</li>
+              <li>The second row's largest and smallest values are <code>7</code> and <code>3</code>, and their difference is <code>4</code>.</li>
+              <li>The third row's difference is <code>6</code>.</li>
             </ul>
-            <p>In this example, the spreadsheet's checksum would be <span class="mono-box">8 + 4 + 6 = 18</span>.</p>
-            <p><strong><u>What is the checksum</u> for the spreadsheet in your puzzle input?</strong></p>
-          `
+            <p>In this example, the spreadsheet's checksum would be <code>8 + 4 + 6 = 18</code>.</p>
+            <p><strong><u>What is the checksum</u> for the spreadsheet in your puzzle input?</strong></p>`
         },
         {
           progress: PROGRESS.completed(2),
@@ -95,14 +96,48 @@ export const APP_CONFIG = {
             <p>"Based on what we're seeing, it looks like all the User wanted is some information about the <u>evenly divisible values</u> in the spreadsheet. Unfortunately, none of us are equipped for that kind of calculation - most of us specialize in bitwise operations."</p>
             <p>It sounds like the goal is to find the only two numbers in each row where one evenly divides the other - that is, where the result of the division operation is a whole number. They would like you to find those numbers on each line, divide them, and add up each line's result.</p>
             <p>For example, given the following spreadsheet:</p>
-            <p class="mono-box">5 9 2 8<br>9 4 7 3<br>3 8 6 5</p>
+            <pre><code>5 9 2 8
+9 4 7 3
+3 8 6 5</code></pre>
             <ul>
-              <li>In the first row, the only two numbers that evenly divide are <span class="mono-box">8</span> and <div class="mono-box">2</div>; the result of this division is <div class="mono-box">4</div>.</li>
-              <li>In the second row, the two numbers are <span class="mono-box">9</span> and <span class="mono-box">3</span>; the result is <span class="mono-box">3</span>.</li>
-              <li>In the third row, the result is <span class="mono-box">2</span>.</li>
+              <li>In the first row, the only two numbers that evenly divide are <code>8</code> and <code>2</code>; the result of this division is <code>4</code>.</li>
+              <li>In the second row, the two numbers are <code>9</code> and <code>3</code>; the result is <code >3</code>.</li>
+              <li>In the third row, the result is <code>2</code>.</li>
             </ul>
-            <p>In this example, the sum of the results would be <span class="mono-box">4 + 3 + 2 = 9</span>.</p>
-            <p><strong>What is the <u>sum of each row's result</u> in your puzzle input?</strong></p>
+            <p>In this example, the sum of the results would be <code>4 + 3 + 2 = 9</code>.</p>
+            <p><strong>What is the <u>sum of each row's result</u> in your puzzle input?</strong></p>`
+        }
+      ]
+    },
+    {
+      title: 'Day 3: Spiral Memory',
+      problems: [
+        {
+          progress: PROGRESS.inProgress(1),
+          fn: day03_1,
+          description: `
+            <p>You come across an experimental new kind of memory stored on an infinite two-dimensional grid.</p>
+            <p>Each square on the grid is allocated in a spiral pattern starting at a location marked 1 and then counting up while spiraling outward. For example, the first few squares are allocated like this:</p>
+            <pre><code>17  16  15  14  13
+18   5   4   3  12
+19   6   1   2  11
+20   7   8   9  10
+21  22  23---> ...</code></pre>
+            <p>While this is very space-efficient (no squares are skipped), requested data must be carried back to square <code>1</code> (the location of the only access port for this memory system) by programs that can only move up, down, left, or right. They always take the shortest path: the Manhattan Distance between the location of the data and square <code>1</code>.</p>
+            <p>For example:</p>
+            <ul>
+              <li>Data from square <code>1</code> is carried <code>0</code> steps, since it's at the access port.</li>
+              <li>Data from square <code>12</code> is carried <code>3</code> steps, such as: down, left, left.</li>
+              <li>Data from square <code>23</code> is carried only <code>2</code> steps: up twice.</li>
+              <li>Data from square <code>1024</code> must be carried <code>31</code> steps.</li>
+            </ul>
+            <p><strong><u>How many steps</u> are required to carry the data from the square identified in your puzzle input all the way to the access port?</strong></p>`
+        },
+        {
+          progress: PROGRESS.pending(2),
+          fn: day03_2,
+          description: `
+
           `
         }
       ]

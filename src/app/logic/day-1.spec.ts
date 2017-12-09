@@ -1,6 +1,6 @@
 import { day01_1, day01_2 } from './day-1';
 
-describe('Tests day 01_1', () => {
+describe('Tests day 1 problem 1', () => {
 
   it('Test case 1', () => {
     expect(day01_1('1122')).toBe(3);
@@ -24,7 +24,7 @@ describe('Tests day 01_1', () => {
 
 });
 
-describe('Test day 01_2', () => {
+describe('Test day 1 problem 2', () => {
 
   it('Test case 1', () => {
     expect(day01_2('1212')).toBe(6);

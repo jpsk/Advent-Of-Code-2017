@@ -13,8 +13,13 @@ $base-padding: 12px 16px;
 
 // Init style
 
+body {
+  overflow-y: scroll;
+}
+
 .container {
   margin: auto;
+  min-width: 420px;
   max-width: $container-width;
   padding-bottom: 400px;
 }
@@ -45,13 +50,14 @@ $base-padding: 12px 16px;
 
 
 .description__status{
-
+  display: inline-block;
 }
 
 .description__status-sub {
   display: inline-block;
   position: relative;
   top: 2px;
+  margin-left: 4px;
 }
 
 .bubble {
@@ -81,11 +87,10 @@ $base-padding: 12px 16px;
 
 .mat-expansion-panel-header-description {
   flex-grow: 0 !important;
-  padding-right: 8%;
 }
 
 
-.mono-box {
+code {
   display: inline-block;
   font-family: monospace;
   padding: 0 2px;
