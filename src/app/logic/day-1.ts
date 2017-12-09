@@ -1,22 +1,17 @@
+import { checkIfInt } from './common';
+
 export const checkAndSumNextVal = (curr: string, next: string, sum: number): number => {
   return parseInt(curr, 10) === parseInt(next, 10)
     ? sum + parseInt(curr, 10)
     : sum;
 };
 
-export const checkIfInt = (val: string): void => {
-  if (isNaN(parseInt(val, 10))) {
-    throw new Error('Invalid Input: Please make sure that all characters are numeric');
-  }
-};
-
-export const parseInput = (val: string): number => {
+export const day01_1 = (val: string): number => {
 
   const length = val.length;
   let sum = 0;
 
   for (let i = 0; i < length; i++) {
-
     const next = i === length - 1
       ? val[0]
       : val[i + 1];
@@ -29,10 +24,9 @@ export const parseInput = (val: string): number => {
 };
 
 
-export const parseInput2 = (val: string): number => {
+export const day01_2 = (val: string): number => {
   const length = val.length;
   const halfway = val.length / 2;
-
   let sum = 0;
 
   // Check for uneven input
@@ -42,7 +36,6 @@ export const parseInput2 = (val: string): number => {
 
   for (let i = 0; i < length; i++) {
     checkIfInt(val[i]);
-
     const next = i > halfway - 1
       ? val[i - halfway]
       : val[i + halfway];

@@ -12,11 +12,13 @@ import {
 
 
 import { AppComponent } from './app.component';
+import { DailyPuzzleComponent } from './daily-puzzle/daily-puzzle.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DailyPuzzleComponent
   ],
   imports: [
     BrowserModule,

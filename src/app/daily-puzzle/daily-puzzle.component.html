@@ -1,0 +1,38 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <strong>{{item.title}}</strong>
+    </mat-panel-title>
+    <mat-panel-description>
+      Progress:
+      <div class="description__status">
+        <div class="description__status-sub" *ngFor="let p of item.problems">
+          <span [title]="p.progress.title" class="bubble" [ngClass]="p.progress.cls"></span>
+        </div>
+      </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-tab-group (selectedIndexChange)="activeProblem.next($event)">
+    <mat-tab *ngFor="let problem of item.problems; let i = index" [label]="'Problem ' + (i + 1)">
+      <h3>Story:</h3>
+      <span [innerHtml]="problem.description"></span>
+    </mat-tab>
+
+  </mat-tab-group>
+
+  <mat-form-field class="full-width">
+    <textarea matInput matTextareaAutosize placeholder="Your input" [formControl]="input"></textarea>
+  </mat-form-field>
+  <div class="button-row">
+    <button [disabled]="disabled" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+  </div>
+
+  <div class="output__panel" [class.output__panel--error]="output && !output.valid">
+    <span class="output__panel--placeholder">Output:</span>
+    <p *ngIf="output">
+      <span [class.error]="!output.valid">{{output.message}}</span>
+    </p>
+  </div>
+
+</mat-expansion-panel>

@@ -16,6 +16,7 @@ $base-padding: 12px 16px;
 .container {
   margin: auto;
   max-width: $container-width;
+  padding-bottom: 400px;
 }
 
 .problems {
@@ -76,4 +77,18 @@ $base-padding: 12px 16px;
 .mat-tab-body-wrapper,
 .mat-tab-body-content {
   overflow: hidden !important;
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 0 !important;
+  padding-right: 8%;
+}
+
+
+.mono-box {
+  display: inline-block;
+  font-family: monospace;
+  padding: 0 2px;
+  border: 1px solid darken($output-panel-background-color, 10);
+  background-color: $output-panel-background-color;
 }
